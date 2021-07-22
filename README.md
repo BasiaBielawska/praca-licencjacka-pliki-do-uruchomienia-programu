@@ -1,0 +1,1 @@
+# praca-licencjacka-dane-do-uruchomienia-programu
