@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Movie Recommender</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Poppins:300,500&amp;display=swap'>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<style>
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-size: 100%;
+    background-color: #ffffff;
+  line-height: 1.5;
+  color: #000;
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+.bg-black {
+  background-color: #000;
+}
+
+.absolute-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  height: 100%;
+  width: 100%;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+    
+    .movie{
+        height: 70vh;
+        margin-top: 15vh;
+        margin-bottom: 15vh;
+        margin-right: 5vh;
+        margin-left: 5vh;
+        display: block;
+        background-color: white;
+        border-radius: 20px;
+        padding: 1em;
+        width: auto;
+        box-shadow: 0px -10px 20px -5px #E2E2E2;
+        text-align: center;
+    }
+
+table,tr,td,th{
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    td{
+      padding: 10px;  
+    }
+
+    .btn.btn-primary:not(.colored-button):not(.btn-left):not(.btn-right):not(.btn-just-icon):not(.menu-item), input[type="submit"]:not(.search-submit), body:not(.woocommerce-account) .woocommerce .button.woocommerce-Button, .woocommerce .product button.button, .woocommerce .product button.button.alt, .woocommerce .product #respond input#submit, .woocommerce-cart .blog-post .woocommerce .cart-collaterals .cart_totals .checkout-button, .woocommerce-checkout #payment #place_order, .woocommerce-account.woocommerce-page button.button, .woocommerce .track_order button[type="submit"], .nav-cart .nav-cart-content .widget .buttons .button, .woocommerce a.button.wc-backward, body.woocommerce .wccm-catalog-item a.button, body.woocommerce a.wccm-button.button, form.woocommerce-form-coupon button.button, div.wpforms-container .wpforms-form button[type=submit].wpforms-submit, div.woocommerce a.button.alt, div.woocommerce table.my_account_orders .button, input[type="submit"].search-submit, .hestia-view-cart-wrapper .added_to_cart.wc-forward, .woocommerce-product-search button, .woocommerce-cart .actions .button, #secondary div[id^=woocommerce_price_filter] .button, .woocommerce div[id^=woocommerce_widget_cart].widget .buttons .button, .searchform input[type=submit], .searchform button, .search-form:not(.media-toolbar-primary) input[type=submit], .search-form:not(.media-toolbar-primary) button, .woocommerce-product-search input[type=submit], .btn.colored-button, .btn.btn-left, .btn.btn-right, .btn:not(.colored-button):not(.btn-left):not(.btn-right):not(.btn-just-icon):not(.menu-item):not(.hestia-sidebar-open):not(.hestia-sidebar-close) {
+    border-radius: 3px;
+}
+
+.btn.btn-primary:not(.colored-button):not(.btn-left):not(.btn-right):not(.btn-just-icon):not(.menu-item), input[type="submit"]:not(.search-submit), body:not(.woocommerce-account) .woocommerce .button.woocommerce-Button, .woocommerce .product button.button, .woocommerce .product button.button.alt, .woocommerce .product #respond input#submit, .woocommerce-cart .blog-post .woocommerce .cart-collaterals .cart_totals .checkout-button, .woocommerce-checkout #payment #place_order, .woocommerce-account.woocommerce-page button.button, .woocommerce .track_order button[type="submit"], .nav-cart .nav-cart-content .widget .buttons .button, .woocommerce a.button.wc-backward, body.woocommerce .wccm-catalog-item a.button, body.woocommerce a.wccm-button.button, form.woocommerce-form-coupon button.button, div.wpforms-container .wpforms-form button[type=submit].wpforms-submit, div.woocommerce a.button.alt, div.woocommerce table.my_account_orders .button, .btn.colored-button, .btn.btn-left, .btn.btn-right, .btn:not(.colored-button):not(.btn-left):not(.btn-right):not(.btn-just-icon):not(.menu-item):not(.hestia-sidebar-open):not(.hestia-sidebar-close) {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 33px;
+    padding-right: 33px;
+    margin: 30px;
+}
+
+button, button:hover, .woocommerce .track_order button[type="submit"], .woocommerce .track_order button[type="submit"]:hover, div.wpforms-container .wpforms-form button[type=submit].wpforms-submit, div.wpforms-container .wpforms-form button[type=submit].wpforms-submit:hover, input[type="button"], input[type="button"]:hover, input[type="submit"], input[type="submit"]:hover, input#searchsubmit, .pagination span.current, .pagination span.current:focus, .pagination span.current:hover, .btn.btn-primary, .btn.btn-primary:link, .btn.btn-primary:hover, .btn.btn-primary:focus, .btn.btn-primary:active, .btn.btn-primary.active, .btn.btn-primary.active:focus, .btn.btn-primary.active:hover, .btn.btn-primary:active:hover, .btn.btn-primary:active:focus, .btn.btn-primary:active:hover, .hestia-sidebar-open.btn.btn-rose, .hestia-sidebar-close.btn.btn-rose, .hestia-sidebar-open.btn.btn-rose:hover, .hestia-sidebar-close.btn.btn-rose:hover, .hestia-sidebar-open.btn.btn-rose:focus, .hestia-sidebar-close.btn.btn-rose:focus, .label.label-primary, .hestia-work .portfolio-item:nth-child(6n+1) .label, .nav-cart .nav-cart-content .widget .buttons .button, .has-accent-background-color[class*="has-background"] {
+    background-color: #e91e63;
+}
+
+body:not(.woocommerce-page) button:not([class^="fl-"]):not(.hestia-scroll-to-top):not(.navbar-toggle):not(.close), body:not(.woocommerce-page) .button:not([class^="fl-"]):not(hestia-scroll-to-top):not(.navbar-toggle):not(.add_to_cart_button):not(.product_type_grouped):not(.product_type_external), div.wpforms-container .wpforms-form button[type=submit].wpforms-submit, input[type="submit"], input[type="button"], .btn.btn-primary, .widget_product_search button[type="submit"], .hestia-sidebar-open.btn.btn-rose, .hestia-sidebar-close.btn.btn-rose, .everest-forms button[type=submit].everest-forms-submit-button {
+    box-shadow: 0 2px 2px 0 rgb(233 30 99 / 14%), 0 3px 1px -2px rgb(233 30 99 / 20%), 0 1px 5px 0 rgb(233 30 99 / 12%);
+}
+
+.carousel .btn {
+    margin: 0;
+}
+
+.btn.btn-primary, .btn.btn-primary.active, .btn.btn-primary.active:focus, .btn.btn-primary.active:hover, .btn.btn-primary:active, .btn.btn-primary:active:focus, .btn.btn-primary:active:hover, .btn.btn-primary:focus, .btn.btn-primary:hover, .open>.btn.btn-primary.dropdown-toggle, .open>.btn.btn-primary.dropdown-toggle:focus, .open>.btn.btn-primary.dropdown-toggle:hover, button, button:hover, input#searchsubmit, input[type=button], input[type=button]:hover, input[type=submit], input[type=submit]:hover {
+    color: #fff;
+}
+
+.btn, .btn.active, .btn.active:focus, .btn.active:hover, .btn.btn-default, .btn.btn-default.active, .btn.btn-default.active:focus, .btn.btn-default.active:hover, .btn.btn-default:active, .btn.btn-default:active:focus, .btn.btn-default:active:hover, .btn.btn-default:focus, .btn.btn-default:hover, .btn:active, .btn:active:focus, .btn:active:hover, .btn:focus, .btn:hover, .open>.btn.btn-default.dropdown-toggle, .open>.btn.btn-default.dropdown-toggle:focus, .open>.btn.btn-default.dropdown-toggle:hover, .open>.btn.dropdown-toggle, .open>.btn.dropdown-toggle:focus, .open>.btn.dropdown-toggle:hover, button:focus, button:hover, input[type=button]:active, input[type=button]:focus, input[type=button]:hover, input[type=submit]:active, input[type=submit]:focus, input[type=submit]:hover {
+    outline: 0;
+}
+
+.btn, button, input[type=button], input[type=submit] {
+    position: relative;
+    border: none;
+    white-space: normal;
+    letter-spacing: 0;
+    text-transform: uppercase;
+}
+
+btn, button, input[type=button], input[type=submit] {
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.btn, button, input[type=button], input[type=submit] {
+    transition: box-shadow .2s cubic-bezier(.4,0,1,1),background-color .2s cubic-bezier(.4,0,.2,1),-webkit-box-shadow .2s cubic-bezier(.4,0,1,1);
+}
+
+.btn {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    line-height: 1.42857143;
+}
+
+a {
+    text-decoration: none;
+}
+
+* {
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+}
+
+
+</style>
+</head>
+<body>
+    <div class="movie">
+        <h2><u>Recommendations using {{ alg }}:</u></h2>
+        <table class="movie_table" align="center">
+            <tr>
+                <th>Movie Title</th>
+                <th>Release Year</th>
+            </tr>
+            <tbody class="table_body">
+                <tr>
+                    <td>{{ movie_names[0] }}</td>
+                    <td>{{ movie_year[0] }}</td>
+                <tr>
+                    <td>{{ movie_names[1] }}</td>
+                    <td>{{ movie_year[1] }}</td>
+                </tr>
+                <tr>
+                    <td>{{ movie_names[2] }}</td>
+                    <td>{{ movie_year[2] }}</td>
+                </tr>
+                <tr>
+                    <td>{{ movie_names[3] }}</td>
+                    <td>{{ movie_year[3] }}</td>
+                </tr>
+                <tr>
+                    <td>{{ movie_names[4] }}</td>
+                    <td>{{ movie_year[4] }}</td>
+                </tr>
+                <tr>
+                    <td>{{ movie_names[5] }}</td>
+                    <td>{{ movie_year[5] }}</td>
+                </tr>
+                <tr>
+                    <td>{{ movie_names[6] }}</td>
+                    <td>{{ movie_year[6] }}</td>
+                </tr>
+                <tr>
+                    <td>{{ movie_names[7] }}</td>
+                    <td>{{ movie_year[7] }}</td>
+                </tr>
+                <tr>
+                    <td>{{ movie_names[8] }}</td>
+                    <td>{{ movie_year[8] }}</td>
+                </tr>
+                <tr>
+                    <td>{{ movie_names[9] }}</td>
+                    <td>{{ movie_year[9] }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <div class="buttons">
+					<a href="/"
+							title="Go back to home page"
+							class="btn btn-primary" >Go back to home page</a>
+									</div>
+  </div>
+
+</body>
+</html>
