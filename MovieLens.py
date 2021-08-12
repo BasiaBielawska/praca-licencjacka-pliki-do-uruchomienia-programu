@@ -22,6 +22,8 @@ class MovieLens:
         self.movieID_to_name = {}
         self.name_to_movieID = {}
         self.movieID_to_year = {}
+        self.movieID_to_genes = {}
+
 
         reader = Reader(line_format='user item rating timestamp', sep=',', skip_lines=1)
 
@@ -33,6 +35,7 @@ class MovieLens:
                 next(movieReader)  #Skip header line
                 for row in movieReader:
                     movieID = int(row[0])
+                    genes = row[2]
                     title = row[1]
                     m = p.search(title)
                     movieName = p.sub(' ' ,title)
@@ -41,7 +44,7 @@ class MovieLens:
                     self.movieID_to_name[movieID] = movieName
                     self.name_to_movieID[movieName] = movieID
                     self.movieID_to_year[movieID] = year
-                    
+                    self.movieID_to_genes[movieID] = genes
                     
 
         return ratingsDataset
@@ -82,3 +85,12 @@ class MovieLens:
             return self.movieID_to_year[movieID]
         else:
             return 0         
+
+    def getGenes(self, movieID):
+        if movieID in self.movieID_to_genes:
+            return self.movieID_to_genes[movieID]
+        else:
+            return 0       
+
+
+            
